@@ -1,28 +1,20 @@
-import { useState } from 'react';
 import { MdEdit } from 'react-icons/md';
 import { MdDelete } from 'react-icons/md';
 
-export const ShowTask = () => {
-  
-  const [showTask, setShowTask] = useState(false);
-
-  const tasks = [
-    { id: 1, name: 'Task A', time: '10:06 PM 4/7/2024' },
-    { id: 2, name: 'Task B', time: '10:06 PM 4/07/2024' },
-    { id: 3, name: 'Task C', time: '10:06 PM 4/07/2024' },
-  ];
-
+export const ShowTask = ({ tasklist, setTasklist }) => {
   return (
     <section className='showTask'>
       <div className='head'>
         <div>
           <span className='title'>Todo</span>
-          <span className='count'>{tasks.length}</span>
+          <span className='count'>{tasklist.length}</span>
         </div>
-        <button className='clearAll'>Clear all</button>
+        <button className='clearAll' onClick={() => setTasklist([])}>
+          Clear all
+        </button>
       </div>
       <ul>
-        {tasks.map((task) => (
+        {tasklist.map((task) => (
           <li key={task.id}>
             <p>
               <span className='name'>{task.name}</span>
