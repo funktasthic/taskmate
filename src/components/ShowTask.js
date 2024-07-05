@@ -1,7 +1,17 @@
 import { MdEdit } from 'react-icons/md';
 import { MdDelete } from 'react-icons/md';
 
-export const ShowTask = ({ tasklist, setTasklist }) => {
+export const ShowTask = ({ tasklist, setTasklist, setTask, task }) => {
+  const handleDelete = (id) => {
+    const updatedTaskList = tasklist.filter((todo) => todo.id !== id);
+    setTasklist(updatedTaskList);
+  };
+
+  const handleEdit = (id) => {
+    const selectedTask = tasklist.find((todo) => todo.id === id);
+    setTask(selectedTask);
+  };
+
   return (
     <section className='showTask'>
       <div className='head'>
@@ -14,16 +24,16 @@ export const ShowTask = ({ tasklist, setTasklist }) => {
         </button>
       </div>
       <ul>
-        {tasklist.map((task) => (
-          <li key={task.id}>
+        {tasklist.map((todo) => (
+          <li key={todo.id}>
             <p>
-              <span className='name'>{task.name}</span>
-              <span className='time'>{task.time}</span>
+              <span className='name'>{todo.name}</span>
+              <span className='time'>{todo.time}</span>
             </p>
-            <i className='bi-pencil-square'>
+            <i className='bi-pencil-square' onClick={() => handleEdit(todo.id)}>
               <MdEdit />
             </i>
-            <i className='bi-trash'>
+            <i className='bi-trash' onClick={() => handleDelete(todo.id)}>
               <MdDelete />
             </i>
           </li>
