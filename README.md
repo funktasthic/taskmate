@@ -14,7 +14,6 @@ Taskmate is a task management application designed to help you organize and prio
 
 - [Node](https://nodejs.org/en/download/current)
 - [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
-- Puerto del servidor = 3000
 
 ## Installation
 
@@ -31,7 +30,7 @@ cd taskmate
 ```bash
 git branch -a
 
-git checkout [nombre de tu rama]
+git checkout [name of the branch]
 ```
 
 3. Install the project dependencies:
